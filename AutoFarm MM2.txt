@@ -1,6 +1,6 @@
 
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "MM2Hub_Pinokio"
+screenGui.Name = "MM2 FARM"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = game:GetService("CoreGui") or game:FindFirstChild("PlayerGui")
 
@@ -95,37 +95,7 @@ local function createButton(text, size, position, color, parent)
     
     createUIStroke(button).Transparency = 0.5
     return button
-end
-
-local function copyToClipboard(button)
-    local discordInvite = "t6rhaAZvhG"
-    
-    local success = pcall(function()
-        if setclipboard then
-            setclipboard(discordInvite)
-        elseif toclipboard then
-            toclipboard(discordInvite)
-        elseif set_clipboard then
-            set_clipboard(discordInvite)
-        elseif writeclipboard then
-            writeclipboard(discordInvite)
-        elseif Clipboard and Clipboard.set then
-            Clipboard.set(discordInvite)
-        else
-            error("Clipboard blocked")
-        end
-    end)
-    
-    if success then
-        button.Text = "Copied!"
-        task.wait(1.5)
-        button.Text = button.Name == "discordBtn" and "Get Discord Link" or "Join community discord!"
-    else
-        button.Text = "Invite: " .. discordInvite
-        task.wait(3.5)
-        button.Text = button.Text
-    end
-end
+end 
 
 -- MAIN HUB FRAME
 local mainFrame = Instance.new("Frame")
@@ -199,13 +169,6 @@ local antiFlingBtn = createButton(
     mainFrame
 )
 
-local discordMainBtn = createButton(
-    "Join community discord!",
-    UDim2.new(0.42, 0, 0, 35),
-    UDim2.new(0.06, 0, 0, 210),
-    Color3.fromRGB(0, 100, 200),
-    mainFrame
-)
 
 local unloadBtn = createButton(
     "Unload script",
