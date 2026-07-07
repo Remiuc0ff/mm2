@@ -27,7 +27,7 @@ end
 local u8 = _Raw:CreateWindow({
 	Title = "Murder Mystery 2 ",
 	Icon = "door-open",
-	Author = "rayz",
+	Author = "lox",
 	Folder = "wwww",
 	Size = UDim2.fromOffset(460, 340),
 	Transparent = true,
