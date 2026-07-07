@@ -70,17 +70,7 @@ do
 		Opened = true,
 		u8:Divider()
 	})
-	local v11 = u8:Section({
-		Title = "More Functions",
-		Icon = "bird",
-		Opened = false
-	})
-	local v12 = u8:Section({
-		Title = "Misc",
-		Icon = "trash",
-		Opened = false
-	})
-
+	
 	t1.MainTab = v10:Tab({
 		Title = "Main",
 		Icon = "box",
@@ -127,12 +117,6 @@ do
 		Icon = "settings",
 		ShowTabTitle = true
 	})
-	t1.Visual = v11:Tab({
-		Title = "spawners",
-		Icon = "eye",
-		ShowTabTitle = true
-	})
-end
 
 local s2 = "Unknown"
 
@@ -496,113 +480,7 @@ do
 			end
 		end
 	end)
-	s5 = "rbxassetid://1076907875"
-	n1 = 1
-	u43 = false
-	t6 = {
-		Discord = "rbxassetid://1076907875",
-		["Fire alarm"] = "rbxassetid://497153454",
-		Oof = "rbxassetid://79348298352567",
-		["Gun sfx"] = "rbxassetid://1585183374",
-		["Samsung Notification"] = "rbxassetid://6205717931",
-		Notify = "rbxassetid://225320558",
-		["Windows Notify System Generic"] = "rbxassetid://489103549",
-		Custom = ""
-	}
 
-	local t7 = {}
-
-	for k in pairs(t6) do
-		table.insert(t7, k)
-	end
-
-	t1.MainTab:Input({
-		Title = "Custom Gun Drop Sound URL",
-		Placeholder = "rbxassetid://",
-		Compact = true,
-		Callback = function(p12)
-			if p12 ~= "" then
-				s5 = p12
-			end
-		end
-	})
-	t1.MainTab:Dropdown({
-		Title = "Gun Drop Sound",
-		Values = t7,
-		Value = "Discord",
-		Compact = true,
-		Callback = function(p13)
-			if p13 ~= "Custom" then
-				s5 = t6[p13]
-			end
-		end
-	})
-end
-
-t1.MainTab:Button({
-	Title = "Preview Gun Drop Sound",
-	Callback = function()
-		local Sound = Instance.new("Sound")
-
-		Sound.SoundId = s5
-		Sound.Volume = n1
-		Sound.Parent = Workspace2
-		Sound:Play()
-		Sound.Ended:Connect(function()
-			Sound:Destroy()
-		end)
-	end
-})
-t1.MainTab:Slider({
-	Title = "Gun Drop Volume",
-	Step = 0.05,
-	Value = {
-		Min = 0,
-		Max = 1,
-		Default = 1
-	},
-	Callback = function(p14)
-		n1 = p14
-	end
-})
-t1.MainTab:Toggle({
-	Title = "Enable",
-	Value = false,
-	Callback = function(p15)
-		u43 = p15
-	end
-})
-task.spawn(function()
-	local t8 = {}
-
-	while true do
-		task.wait(0.5)
-
-		if u43 then
-			for _, descendant in ipairs(Workspace2:GetDescendants()) do
-				if descendant.Name == "GunDrop" and not t8[descendant] then
-					local Sound = Instance.new("Sound")
-
-					Sound.SoundId = s5
-					Sound.Volume = n1
-					Sound.Parent = descendant
-					Sound:Play()
-					Sound.Ended:Connect(function()
-						Sound:Destroy()
-					end)
-					_Raw:Notify({
-						Title = "Gun!",
-						Content = "Gun Dropped",
-						Duration = 10,
-						Icon = "snow",
-						IconThemed = true
-					})
-					t8[descendant] = true
-				end
-			end
-		end
-	end
-end)
 t1.MainTab:Divider()
 t1.MainTab:Toggle({
 	Title = "Round Timer",
