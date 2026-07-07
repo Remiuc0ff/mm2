@@ -177,12 +177,11 @@ local unloadBtn = createButton(
     Color3.fromRGB(180, 20, 20),
     mainFrame
 )
-
 local footerLabel = Instance.new("TextLabel")
 footerLabel.Size = UDim2.new(1, 0, 0, 20)
 footerLabel.Position = UDim2.new(0, 0, 1, -25)
 footerLabel.BackgroundTransparency = 1
-footerLabel.Text = "PinokioScripts"
+footerLabel.Text = "Gandon67"
 footerLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
 footerLabel.TextSize = 14
 footerLabel.Font = Enum.Font.SourceSansBold
